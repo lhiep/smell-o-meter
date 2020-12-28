@@ -138,6 +138,13 @@
       transform: translate(0, -100%);
     }
   </style>
+  <script>
+    const getData = fetch("https://corona.lmao.ninja/v2/all").then(r => r.json());
+    window.onload = async () => {
+      let allData = await getData;
+      document.getElementById("totalCases").innerHTML = `covid-19 total cases: ${allData.cases.toLocaleString()}`;
+    };
+  </script>
 </head>
 
 <body>
@@ -147,12 +154,12 @@
         <div class="animated-title">
           <div class="text-top">
             <div>
-              <span>no</span>
-              <span>not yet</span>
+              <span>unfortunately</span>
+              <span>still no</span>
             </div>
           </div>
           <div class="text-bottom">
-            <div>come back tomorrow</div>
+            <div id="totalCases"></div>
           </div>
         </div>
         <div style="position: relative">
